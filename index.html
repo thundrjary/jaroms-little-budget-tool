@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+
+<html lang="en-US">
+<head>
+		<!--<link rel="stylesheet" href="https://unpkg.com/sakura.css/css/sakura.css" type="text/css">-->
+		<script src="https://cdn.tailwindcss.com"></script>
+
+	</head>
+	<body class="w-full max-w-md mx-auto p-6">
+	<div class="flex justify-around decoration-2">
+		<span>Yearly</span>
+		<span class="text-emerald-500">//</span>
+		<span>Jan</span>
+		<span>Feb</span>
+		<span>Mar</span>
+		<span>Apr</span>
+		<span>May</span>
+		<span>Jun</span>
+		<span>Juy</span>
+		<span>Aug</span>
+	</div>
+	<!--<div class="mt-9 bg-white rounded-xl shadow-lg" >-->
+	<div class="">
+		<button class="text-emerald-500 m-5" hx-put="/add_row" hx-target="#total" hx-swap="outerHTML">Add</button>
+		<table class="min-w-full content-center px-5 text-lg text-black decoration-2 table-fixed dark:divide-gray-700" id="myTable"> 
+			<tbody class="" id="tableBody">
+			<tr>
+				<td class="px-5" contentEditable=true hx-post="/update_cell" hx-trigger="input">Income</td>
+				<td>$</td>
+				<td contentEditable=true hx-post="/update_cell" hx-trigger="input">2100</td>
+				<td>
+				    <button class="px-5 text-red-600" hx-delete="/delete-row">
+							x
+					</button>
+				</td>
+			</tr>
+
+			<tr>
+				<td class="px-5" contentEditable=true hx-post="/update_cell" hx-trigger="input">Mortgage</td>
+				<td>$</td>
+				<td contentEditable=true hx-post="/update_cell" hx-trigger="input">2100</td>
+			    <td>
+				    <button class="px-5 text-red-600" hx-delete="/delete-row">
+							x 
+					</button>
+				</td>
+			</tr>
+
+			<tr>
+				<td class="px-5" contentEditable=true hx-trigger="input" hx-post="/update_cell">Insurance</td>
+				<td>$</td>
+				<td contentEditable=true hx-trigger="input" hx-post="/update_cell">200</td>
+				<td>
+				    <button class="px-5 text-red-600" hx-delete="/delete-row">
+							x 
+					</button>
+				</td>
+			</tr>
+			<tr id=row>
+				<td class="px-5" contentEditable=true hx-trigger="input" hx-post="/update_cell">Electric</td>
+				<td>$</td>
+				<td contentEditable=true hx-trigger="input" hx-post="/update_cell">79</td>
+				<td>
+				    <button class="px-5 text-red-600" hx-delete="/delete-row">
+							x 
+					</button>
+				</td>
+			</tr>
+			<tr id="total">
+				<td></td>
+				<td class="align-right"><b>$</b></td>
+				<td class="py-5" hx-trigger="input from:td" hx-get="/get_total"><b>0</b></td>
+			</tr>
+
+			</tbody>
+
+		</table>
+
+		<!--<button class="text-emerald-500 m-5" hx-put="/add_row" hx-target="#tableBody" hx-swap-oob="true">Add</button>--> </div>
+
+	<script 
+		src="https://unpkg.com/htmx.org@1.8.2" 
+		integrity="sha384-+8ISc/waZcRdXCLxVgbsLzay31nCdyZXQxnsUy++HJzJliTzxKWr0m1cIEMyUzQu" 
+		crossorigin="anonymous">
+	</script>
+	</body> </html>
+
